@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,19 +7,18 @@ public class Player : MonoBehaviour
     
     private bool _isGrounded = true;
     private bool isStarted = false;
-
     private IMovable _movable;
-
     private Coroutine _currentBuffDuration;
+    
     private void Awake()
     {
         Animator = GetComponent<Animator>();
+        _movable = new DefaultMove();
     }
 
     private void Start()
     { 
-        _movable = new DefaultMove();
-        StartCoroutine(DelayToStart());
+        StartCoroutine(DelayToRun());
     }
 
     private void Update()
@@ -43,16 +41,16 @@ public class Player : MonoBehaviour
         }
         
         _movable = movableType;
-        _currentBuffDuration = StartCoroutine(ResetToDefault(duration));
+        _currentBuffDuration = StartCoroutine(ResetToDefaultAfter(duration));
     }
 
-    private IEnumerator ResetToDefault(float duration)
+    private IEnumerator ResetToDefaultAfter(float duration)
     {
         yield return new WaitForSeconds(duration);
         _movable = new DefaultMove();
     }
 
-    private IEnumerator DelayToStart()
+    private IEnumerator DelayToRun()
     {
         yield return new WaitForSeconds(1);
         isStarted = true;

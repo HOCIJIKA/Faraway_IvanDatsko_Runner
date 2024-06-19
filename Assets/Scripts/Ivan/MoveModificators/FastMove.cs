@@ -2,10 +2,5 @@ using UnityEngine;
 
 public class FastMove : BaseMove
 {
-    public FastMove() : base(5f) { }
-
-    public override Vector3 MoveToPositionY(Transform transform)
-    {
-        return transform.position;
-    }
+    public FastMove() : base(new BaseParameters(5)) { }
 }

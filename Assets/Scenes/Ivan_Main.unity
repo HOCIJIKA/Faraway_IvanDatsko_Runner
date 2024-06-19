@@ -353,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 1152332212510702032, guid: 11319de0d38a45d44b080756ac21f967,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.021
+      value: 27.37
       objectReference: {fileID: 0}
     - target: {fileID: 1152332212510702032, guid: 11319de0d38a45d44b080756ac21f967,
         type: 3}
@@ -802,7 +802,7 @@ PrefabInstance:
     - target: {fileID: 1502172114245009532, guid: bf228c0a33132ac4aa786d1421bf29a4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.53
+      value: 12.64
       objectReference: {fileID: 0}
     - target: {fileID: 1502172114245009532, guid: bf228c0a33132ac4aa786d1421bf29a4,
         type: 3}
@@ -937,12 +937,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1617060630468577882}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1617060630468577887 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4991519263777567124, guid: 0b2ef59a9c840e7448f37a88efc03298,
-    type: 3}
-  m_PrefabInstance: {fileID: 1617060630468577882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1617060630468577889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,7 +949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd9bef776e85f64582d39d45b198b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1617060630468577887}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -966,5 +959,5 @@ SceneRoots:
   - {fileID: 1177265562}
   - {fileID: 683430126}
   - {fileID: 773204841}
-  - {fileID: 961962676}
   - {fileID: 1988000176}
+  - {fileID: 961962676}
