@@ -28,15 +28,20 @@ public class Player : MonoBehaviour
         _movable.Move(transform, _animator);
     }
 
+    public void SetBuffType(IMovable movableType)
+    {
+        _movable = movableType;
+    }
+
     private IEnumerator DelayToStart()
     {
         yield return new WaitForSeconds(1);
         isStarted = true;
 
-        StartCoroutine(ChangeMove());
+        //StartCoroutine(ChangeMove());
     }
 
-    private IEnumerator ChangeMove()
+    /*private IEnumerator ChangeMove()
     {
         while (true)
         {
@@ -59,5 +64,5 @@ public class Player : MonoBehaviour
             Debug.LogWarning($"_movable: {_movable.GetType()}");
             
         }
-    }
+    }*/
 }
