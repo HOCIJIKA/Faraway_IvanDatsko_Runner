@@ -1,25 +1,21 @@
 using UnityEngine;
 
-public class BaseMove : IMovable
+public abstract class BaseMove : IMovable
 {
-    private readonly float _speed = 1f;
-    
-    public void Move(Transform transform, Animator animator)
+    private readonly float _speed;
+
+    protected BaseMove(float speed)
+    {
+        _speed = speed;
+    }
+
+    public virtual void Move(Transform transform, Animator animator)
     {
         var vectorToMove = new Vector3(1, 0, 0) * Time.deltaTime * _speed;
         transform.Translate(vectorToMove);
-        
+
         animator.SetBool("grounded", true);
-        animator.SetFloat("velocityX", 1);
     }
 
-    public float GetSpeed()
-    {
-        return _speed;
-    }
-
-    public Vector3 MoveToPositionY(Transform transform)
-    {
-        return new Vector3(transform.position.x, 0, transform.position.z);
-    }
+    public abstract Vector3 MoveToPositionY(Transform transform);
 }

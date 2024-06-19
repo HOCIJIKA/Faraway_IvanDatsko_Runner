@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     private IMovable _movable;
 
     private void Start()
-    {
-        _movable = new BaseMove();
+    { 
+        _movable = new DefaultMove();
         StartCoroutine(DelayToStart());
     }
 
@@ -50,12 +50,12 @@ public class Player : MonoBehaviour
 
             
             yield return new WaitForSeconds(2);
-            _movable = new SloveMove();
+            _movable = new SlowMove();
             Debug.LogWarning($"_movable: {_movable.GetType()}");
 
             
             yield return new WaitForSeconds(2);
-            _movable = new BaseMove();
+            _movable = new DefaultMove();
             Debug.LogWarning($"_movable: {_movable.GetType()}");
             
         }
