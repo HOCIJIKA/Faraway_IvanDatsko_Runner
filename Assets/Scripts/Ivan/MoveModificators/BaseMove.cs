@@ -13,8 +13,6 @@ public abstract class BaseMove : IMovable
     {
         var vectorToMove = new Vector3(1, 0, 0) * Time.deltaTime * _parameters.Speed;
         player.transform.Translate(vectorToMove);
-
-        player.Animator.SetBool("grounded", true);
     }
 
     protected struct BaseParameters

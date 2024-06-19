@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Animator Animator { get; set; }
+    private const float RayLength = 0.45f;
+
+    [SerializeField] private LayerMask _groundLayer;
+
+    public Animator Animator { get; private set; }
     
-    private bool _isGrounded = true;
-    private bool isStarted = false;
-    private IMovable _movable;
-    private Coroutine _currentBuffDuration;
+    private bool _isGrounded { get; set; }
+    private bool isStarted { get; set; }
+    private IMovable _movable { get; set; }
+    private Coroutine _currentBuffDurationRoutine { get; set; }
     
     private void Awake()
     {
@@ -30,20 +34,31 @@ public class Player : MonoBehaviour
             return;
         }
         
+        CheckGround();
+        Animator.SetBool("grounded", _isGrounded);
+        Animator.SetFloat("velocityX", 1);
+        
         _movable.Move(this);
     }
 
     public void AddBuff(IMovable movableType, float duration)
     {
-        if (_currentBuffDuration != default)
+        if (_currentBuffDurationRoutine != default)
         {
-            StopCoroutine(_currentBuffDuration);
+            StopCoroutine(_currentBuffDurationRoutine);
         }
         
         _movable = movableType;
-        _currentBuffDuration = StartCoroutine(ResetToDefaultAfter(duration));
+        _currentBuffDurationRoutine = StartCoroutine(ResetToDefaultAfter(duration));
     }
-
+    
+    private void CheckGround()
+    {
+        Vector2 direction = Vector2.down;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, RayLength, _groundLayer);
+        _isGrounded = hit.collider != null;
+    }
+    
     private IEnumerator ResetToDefaultAfter(float duration)
     {
         yield return new WaitForSeconds(duration);

@@ -7,6 +7,5 @@ public class DefaultMove : BaseMove
     public override void Move(Player player)
     {
         base.Move(player);
-        player.Animator.SetBool("grounded", true);
     }
 }

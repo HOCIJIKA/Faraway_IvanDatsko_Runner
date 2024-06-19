@@ -8,7 +8,6 @@ public class Fly : BaseMove
     {
         base.Move(player);
         player.transform.position = MoveToPositionY(player.transform);
-        player.Animator.SetBool("grounded", false);
     }
 
     public virtual Vector3 MoveToPositionY(Transform transform)
