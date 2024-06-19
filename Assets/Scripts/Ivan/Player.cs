@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     public Animator Animator { get; private set; }
+    public Rigidbody2D Rigidbody2D { get; private set; }
     
     private bool _isGrounded { get; set; }
     private bool isStarted { get; set; }
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         _movable = new DefaultMove();
+        Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour
         StartCoroutine(DelayToRun());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!isStarted)
         {

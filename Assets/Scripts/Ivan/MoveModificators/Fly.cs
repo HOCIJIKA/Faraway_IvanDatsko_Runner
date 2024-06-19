@@ -6,8 +6,8 @@ public class Fly : BaseMove
 
     public override void Move(Player player)
     {
-        base.Move(player);
         player.transform.position = MoveToPositionY(player.transform);
+        base.Move(player);
     }
 
     public virtual Vector3 MoveToPositionY(Transform transform)

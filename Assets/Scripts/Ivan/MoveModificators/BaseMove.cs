@@ -11,8 +11,11 @@ public abstract class BaseMove : IMovable
 
     public virtual void Move(Player player)
     {
-        var vectorToMove = new Vector3(1, 0, 0) * Time.deltaTime * _parameters.Speed;
-        player.transform.Translate(vectorToMove);
+        // var vectorToMove = new Vector3(1, 0, 0) * Time.deltaTime * _parameters.Speed;
+        // player.transform.Translate(vectorToMove);
+        
+        Vector2 vectorToMove = Vector2.right * _parameters.Speed * Time.fixedDeltaTime;
+        player.Rigidbody2D.MovePosition(player.Rigidbody2D.position + vectorToMove);
     }
 
     protected struct BaseParameters
