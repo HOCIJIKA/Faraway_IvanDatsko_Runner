@@ -44,7 +44,9 @@ public class Player : MonoBehaviour
         Animator.SetBool("grounded", IsGrounded);
         Animator.SetFloat("velocityX", 1);
 
+#if UNITY_EDITOR
         IsJump = Input.GetButtonDown("Jump");
+#endif
         _movable.Move(this);
         IsJump = false;
     }
