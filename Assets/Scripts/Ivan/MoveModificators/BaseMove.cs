@@ -9,12 +9,12 @@ public abstract class BaseMove : IMovable
         _speed = speed;
     }
 
-    public virtual void Move(Transform transform, Animator animator)
+    public virtual void Move(Player player)
     {
         var vectorToMove = new Vector3(1, 0, 0) * Time.deltaTime * _speed;
-        transform.Translate(vectorToMove);
+        player.transform.Translate(vectorToMove);
 
-        animator.SetBool("grounded", true);
+        player.Animator.SetBool("grounded", true);
     }
 
     public abstract Vector3 MoveToPositionY(Transform transform);

@@ -13,7 +13,8 @@ public class Buff : MonoBehaviour
     }
 
     [SerializeField] private Buffs _buff = Buffs.None;
-
+    [SerializeField] private float _baffDuration = 10;
+    
     private void Awake()
     {
         switch (_buff)
@@ -36,7 +37,7 @@ public class Buff : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<Player>().SetBuffType(_movable);
+            other.GetComponent<Player>().AddBuff(_movable, _baffDuration);
             
             Destroy(gameObject);
         }

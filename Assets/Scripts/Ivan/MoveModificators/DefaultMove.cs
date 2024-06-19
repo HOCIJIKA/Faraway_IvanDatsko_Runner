@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DefaultMove : BaseMove
 {
     public DefaultMove() : base(1f) { }
 
-    public override void Move(Transform transform, Animator animator)
+    public override void Move(Player player)
     {
-        base.Move(transform, animator);
-        animator.SetBool("grounded", true);
+        base.Move(player);
+        player.Animator.SetBool("grounded", true);
     }
     
     public override Vector3 MoveToPositionY(Transform transform)
