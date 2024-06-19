@@ -11,13 +11,19 @@ public abstract class BaseMove : IMovable
 
     public virtual void Move(Player player)
     {
-        // var vectorToMove = new Vector3(1, 0, 0) * Time.deltaTime * _parameters.Speed;
-        // player.transform.Translate(vectorToMove);
-        
-        //Vector2 vectorToMove = Vector2.right * _parameters.Speed * Time.fixedDeltaTime;
         Vector2 currentVelocity = player.Rigidbody2D.velocity;
         Vector2 targetVelocity = new Vector2(_parameters.Speed, currentVelocity.y);
         player.Rigidbody2D.velocity = targetVelocity;
+
+        if (player.IsJump && player.IsGrounded )
+        {
+            Jump(player.Rigidbody2D);
+        }
+    }
+    
+    private void Jump(Rigidbody2D rigidbody2D)
+    {
+        rigidbody2D.AddForce(new Vector2(0f, 5), ForceMode2D.Impulse);
     }
 
     protected struct BaseParameters

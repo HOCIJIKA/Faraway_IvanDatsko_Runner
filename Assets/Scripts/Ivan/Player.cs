@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public Rigidbody2D Rigidbody2D { get; private set; }
     
-    private bool _isGrounded { get; set; }
+    public bool IsJump { get; set; }
+    
+    public bool IsGrounded { get; set; }
+
     private bool isStarted { get; set; }
     private IMovable _movable { get; set; }
     private Coroutine _currentBuffDurationRoutine { get; set; }
@@ -27,7 +31,7 @@ public class Player : MonoBehaviour
         StartCoroutine(DelayToRun());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!isStarted)
         {
@@ -37,11 +41,14 @@ public class Player : MonoBehaviour
         }
         
         CheckGround();
-        Animator.SetBool("grounded", _isGrounded);
+        Animator.SetBool("grounded", IsGrounded);
         Animator.SetFloat("velocityX", 1);
-        
+
+        IsJump = Input.GetButtonDown("Jump");
         _movable.Move(this);
+        IsJump = false;
     }
+
 
     public void AddBuff(IMovable movableType, float duration)
     {
@@ -53,12 +60,12 @@ public class Player : MonoBehaviour
         _movable = movableType;
         _currentBuffDurationRoutine = StartCoroutine(ResetToDefaultAfter(duration));
     }
-    
+
     private void CheckGround()
     {
         Vector2 direction = Vector2.down;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, RayLength, _groundLayer);
-        _isGrounded = hit.collider != null;
+        IsGrounded = hit.collider != null;
     }
     
     private IEnumerator ResetToDefaultAfter(float duration)
