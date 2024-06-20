@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1617060630468577889}
   _jump: {fileID: 812473750}
+  _restart: {fileID: 895389880}
 --- !u!4 &341586145
 Transform:
   m_ObjectHideFlags: 0

@@ -14,7 +14,8 @@ public abstract class BaseMove : IMovable
         Vector2 currentVelocity = player.Rigidbody2D.velocity;
         Vector2 targetVelocity = new Vector2(_parameters.Speed, currentVelocity.y);
         player.Rigidbody2D.velocity = targetVelocity;
-
+        player.Rigidbody2D.isKinematic = false;
+        
         if (player.IsJump && player.IsGrounded )
         {
             Jump(player.Rigidbody2D);
