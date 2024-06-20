@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class BaseMove : IMovable
 {
+    private const float BaseSpeed = 1.5f;
     protected readonly BaseParameters _parameters;
 
     protected BaseMove(BaseParameters parameters)
@@ -12,7 +13,7 @@ public abstract class BaseMove : IMovable
     public virtual void Move(Player player)
     {
         Vector2 currentVelocity = player.Rigidbody2D.velocity;
-        Vector2 targetVelocity = new Vector2(_parameters.Speed, currentVelocity.y);
+        Vector2 targetVelocity = new Vector2(BaseSpeed * _parameters.Speed, currentVelocity.y);
         player.Rigidbody2D.velocity = targetVelocity;
         player.Rigidbody2D.isKinematic = false;
         
