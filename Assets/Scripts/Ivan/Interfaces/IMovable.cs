@@ -1,4 +1,4 @@
 public interface IMovable
 {
-    void Move(Player player);
+    void Move(PlayerController playerController);
 }

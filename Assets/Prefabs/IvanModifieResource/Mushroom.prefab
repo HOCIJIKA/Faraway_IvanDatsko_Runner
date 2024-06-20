@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buff: 3
+  _DefaultBuffDuration: 10
 --- !u!58 &7010115159696166188
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.21
 --- !u!50 &6979363976223250529
 Rigidbody2D:
   serializedVersion: 4
@@ -121,17 +122,17 @@ PrefabInstance:
     - target: {fileID: 1109107542308682946, guid: 109d1af4763e51f448968af6bf358b77,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.07337164
+      value: 0.118121006
       objectReference: {fileID: 0}
     - target: {fileID: 1109107542308682946, guid: 109d1af4763e51f448968af6bf358b77,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.07337164
+      value: 0.118121006
       objectReference: {fileID: 0}
     - target: {fileID: 1109107542308682946, guid: 109d1af4763e51f448968af6bf358b77,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.07337164
+      value: 0.118121006
       objectReference: {fileID: 0}
     - target: {fileID: 1109107542308682946, guid: 109d1af4763e51f448968af6bf358b77,
         type: 3}

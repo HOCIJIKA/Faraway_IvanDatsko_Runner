@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [FormerlySerializedAs("_player")] [SerializeField] private PlayerController playerController;
     [SerializeField] private Button _jump;
     [SerializeField] private Button _restart;
 
@@ -19,12 +16,12 @@ public class UIController : MonoBehaviour
 
     private void PlayerJump()
     {
-        _player.IsJump = true;
+        playerController.PlayerMovement.IsJump = true;
     }
     
     private void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StaticActions.RestartMap?.Invoke();
     }
 
     private void OnDestroy()

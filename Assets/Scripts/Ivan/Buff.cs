@@ -1,3 +1,4 @@
+using Ivan.MoveModifiers;
 using UnityEngine;
 
 public class Buff : MonoBehaviour
@@ -13,7 +14,7 @@ public class Buff : MonoBehaviour
     }
 
     [SerializeField] private Buffs _buff = Buffs.None;
-    [SerializeField] private float _baffDuration = 10;
+    [SerializeField] private float _DefaultBuffDuration = 10;
     
     private void Awake()
     {
@@ -37,8 +38,8 @@ public class Buff : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<Player>().AddBuff(_movable, _baffDuration);
-            Destroy(gameObject);
+            other.GetComponent<PlayerController>().AddBuff(_movable, _DefaultBuffDuration); 
+            gameObject.SetActive(false);
         }
     }
 }
