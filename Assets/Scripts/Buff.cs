@@ -5,6 +5,7 @@ using UnityEngine;
 /// Monobeh for interactive object.
 /// Collected all Buffs (Move Parameters tittles)
 /// </summary>
+[RequireComponent(typeof(Collider2D))]
 public class Buff : MonoBehaviour
 {
     private IMovable _movable;
