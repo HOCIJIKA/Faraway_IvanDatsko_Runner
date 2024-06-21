@@ -1,32 +1,16 @@
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [FormerlySerializedAs("_player")] [SerializeField] private PlayerController playerController;
-    [SerializeField] private Button _jump;
-    [SerializeField] private Button _restart;
+    [SerializeField] private PlayerController playerController;
 
-    private void Awake()
-    {
-        _jump.onClick.AddListener(PlayerJump);
-        _restart.onClick.AddListener(Restart);
-    }
-
-    private void PlayerJump()
+    public void OnPlayerJump()
     {
         playerController.PlayerMovement.IsJump = true;
     }
     
-    private void Restart()
+    public void OnRestart()
     {
-        StaticActions.RestartMap?.Invoke();
-    }
-
-    private void OnDestroy()
-    {
-        _jump.onClick.RemoveListener(PlayerJump);
-        _jump.onClick.RemoveListener(Restart);
+        StaticActions.RestartPlayer?.Invoke();
     }
 }

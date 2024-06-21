@@ -9,7 +9,7 @@ public class MapController : MonoBehaviour
     {
         Application.targetFrameRate = 144;
         
-        StaticActions.RestartMap += EnableAll;
+        StaticActions.RestartPlayer += EnableAll;
     }
 
     private void EnableAll()
@@ -22,6 +22,6 @@ public class MapController : MonoBehaviour
 
     private void OnDestroy()
     {
-        StaticActions.RestartMap -= EnableAll;
+        StaticActions.RestartPlayer -= EnableAll;
     }
 }

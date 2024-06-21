@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
         PlayerMovement = GetComponent<PlayerMovement>();
         _movable = new DefaultMove();
 
-        StaticActions.RestartMap += Restart;
+        StaticActions.RestartPlayer += Restart;
     }
     
     private void Start()
@@ -70,6 +70,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        StaticActions.RestartMap -= Restart;
+        StaticActions.RestartPlayer -= Restart;
     }
 }
