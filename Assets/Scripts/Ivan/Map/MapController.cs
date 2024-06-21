@@ -1,27 +1,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Collected all interactive object which need to be renewed after the player restarts
+/// </summary>
 public class MapController : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _disabledObjects;
+        [Tooltip("Add all interactive objects that need to be updated after the player restarts")]
+    [SerializeField] private List<Buff> _interactiveObjects;
 
     private void Awake()
     {
-        Application.targetFrameRate = 144;
+        Application.targetFrameRate = 144; // set the target frame rate to make the game smooth.
         
-        StaticActions.RestartPlayer += EnableAll;
+        StaticActions.RestartPlayer += ResetAll;
     }
-
-    private void EnableAll()
+    
+    /// <summary>
+    /// Reset interactives
+    /// </summary>
+    private void ResetAll()
     {
-        foreach (var disabledObject in _disabledObjects)
+        foreach (var interactiveObject in _interactiveObjects)
         {
-            disabledObject.SetActive(true);
+            interactiveObject.ResetObjectAfterRestart();
         }
     }
 
     private void OnDestroy()
     {
-        StaticActions.RestartPlayer -= EnableAll;
+        StaticActions.RestartPlayer -= ResetAll;
     }
 }
