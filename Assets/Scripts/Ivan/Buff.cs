@@ -38,7 +38,7 @@ public class Buff : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<PlayerController>().AddBuff(_movable, _DefaultBuffDuration); 
+            other.GetComponent<PlayerController>().SetMoveModifier(_movable, _DefaultBuffDuration); 
             gameObject.SetActive(false);
         }
     }

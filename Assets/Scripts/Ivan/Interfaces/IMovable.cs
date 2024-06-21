@@ -1,3 +1,6 @@
+/// <summary>
+/// interface for all move modifications
+/// </summary>
 public interface IMovable
 {
     /// <summary>
