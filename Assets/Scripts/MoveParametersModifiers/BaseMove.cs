@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ivan.MoveModifiers
+namespace MoveParametersModifiers
 {
     /// <summary>
     /// Parent class for all movement modifiers
