@@ -1,3 +1,5 @@
+using MoveParametersModifiers;
+
 namespace Ivan.MoveModifiers
 {
     /// <summary>
