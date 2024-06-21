@@ -1,10 +1,17 @@
 using Ivan.MoveModifiers;
 using UnityEngine;
 
+/// <summary>
+/// Monobeh for interactive object.
+/// Collected all Buffs (Move Parameters tittles)
+/// </summary>
 public class Buff : MonoBehaviour
 {
     private IMovable _movable;
     
+    /// <summary>
+    /// enum of tittles
+    /// </summary>
     private enum Buffs
     {
         None,
@@ -13,10 +20,32 @@ public class Buff : MonoBehaviour
         Fly
     }
 
+    [Tooltip("Select buff")]
     [SerializeField] private Buffs _buff = Buffs.None;
-    [SerializeField] private float _DefaultBuffDuration = 10;
+    
+    /// <summary>
+    /// default buff duration
+    /// </summary>
+    [SerializeField] private float _defaultBuffDuration = 10;
+    
     
     private void Awake()
+    {
+        SelectMoveParameters();
+    }
+
+    /// <summary>
+    /// Reset buff object
+    /// </summary>
+    public void ResetObjectAfterRestart()
+    {
+        gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Select move parameters
+    /// </summary>
+    private void SelectMoveParameters()
     {
         switch (_buff)
         {
@@ -38,8 +67,18 @@ public class Buff : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<PlayerController>().AddBuff(_movable, _DefaultBuffDuration); 
-            gameObject.SetActive(false);
+            OnCollisionWithPLayer(other.GetComponent<PlayerController>());
         }
     }
+
+    /// <summary>
+    /// Player got the buff
+    /// </summary>
+    /// <param name="playerController">PlayerController</param>
+    private void OnCollisionWithPLayer(PlayerController playerController)
+    {
+        playerController.SetMoveModifier(_movable, _defaultBuffDuration); //Set new move parameters for player
+        gameObject.SetActive(false);
+    }
+    
 }
