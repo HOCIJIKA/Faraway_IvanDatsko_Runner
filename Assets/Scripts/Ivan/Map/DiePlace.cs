@@ -6,7 +6,7 @@ public class DiePlace : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            StaticActions.RestartMap?.Invoke();
+            StaticActions.RestartPlayer?.Invoke();
         }
     }
 }
